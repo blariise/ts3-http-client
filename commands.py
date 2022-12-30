@@ -98,7 +98,7 @@ class Commands():
         }
         return self.query('bandel', params)
 
-    def ban_delall(
+    def ban_del_all(
         self
     ) -> Response:
         return self.query('bandelall')
@@ -117,6 +117,88 @@ class Commands():
         if count is True:
             params['count'] = ''
         return self.query('banlist', params)
+
+    def binding_list(
+        self,
+        subsystem: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'subsystem': subsystem 
+        }
+        return self.query('bindinglist', params)
+
+    def ch_add_perm(
+        self,
+        cid: Optional[int] = None,
+        permid: Optional[int] = None,
+        permsid: Optional[int] = None,
+        permvalue: Optional[int] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'permid': permid,
+            'permsid': permsid,
+            'permvalue': permvalue
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('channeladdperm', params)
+
+    def ch_client_add_perm(
+        self,
+        cid: Optional[int] = None,
+        cldbid: Optional[int] = None,
+        permid: Optional[int] = None,
+        permsid: Optional[int] = None,
+        permvalue: Optional[int] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'cldbid': cldbid,
+            'permid': permid,
+            'permsid': permsid,
+            'permvalue': permvalue
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('channelclientaddperm', params)
+
+    def ch_client_del_perm(
+        self,
+        cid: Optional[int] = None,
+        cldbid: Optional[int] = None,
+        permid: Optional[int] = None,
+        permsid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'cldbid': cldbid,
+            'permid': permid,
+            'permsid': permsid,
+        }
+        return self.query('channelclientpermlist', params)
+
+    def ch_client_perm_list(
+        self,
+        cid: Optional[int] = None,
+        cldbid: Optional[int] = None,
+        permsid: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'cldbid': cldbid,
+            'permsid': permsid
+        }
+        if permsid is True:
+            params['-permsid'] = ''
+        return self.query('channelclientaddperm', params)
 
     def whoami(self) -> Response:
         return self.query('whoami')
