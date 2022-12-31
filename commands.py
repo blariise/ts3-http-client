@@ -124,7 +124,7 @@ class Commands():
     ) -> Response:
 
         params = {
-            'subsystem': subsystem 
+            'subsystem': subsystem
         }
         return self.query('bindinglist', params)
 
@@ -199,6 +199,109 @@ class Commands():
         if permsid is True:
             params['-permsid'] = ''
         return self.query('channelclientaddperm', params)
+
+    def ch_create(
+        self,
+        channel_name: Optional[str] = None,
+        **kwargs
+    ) -> Response:
+
+        params = {
+            'channel_name': channel_name
+        }
+        params += kwargs
+        return self.query('channelcreate', params)
+
+    def ch_delete(
+        self,
+        cid: Optional[int] = None,
+        force: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'force': force
+        }
+        return self.query('channeldelete', params)
+
+    def ch_del_perm(
+        self,
+        cid: Optional[int] = None,
+        permid: Optional[int] = None,
+        permsid: Optional[int] = None,
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'permid': permid,
+            'permsid': permsid
+        }
+        return self.query('channeldelperm', params)
+
+    def ch_edit(
+        self,
+        cid: Optional[int] = None,
+        cpid: Optional[int] = None,
+        channel_name: Optional[str] = None,
+        channel_topic: Optional[str] = None,
+        channel_description: Optional[str] = None,
+        channel_password: Optional[str] = None,
+        channel_codec: Optional[int] = None,
+        channel_codec_quality: Optional[int] = None,
+        channel_maxclients: Optional[int] = None,
+        channel_maxfamilyclients: Optional[int] = None,
+        channel_order: Optional[int] = None,
+        channel_flag_permanent: Optional[bool] = None,
+        channel_flag_semi_permanent: Optional[bool] = None,
+        channel_flag_default: Optional[bool] = None,
+        channel_codec_is_unencrypted: Optional[bool] = None,
+        channel_flag_maxclients_unlimited: Optional[int] = None,
+        channel_flag_maxfamilyclients_unlimited: Optional[bool] = None,
+        channel_flag_maxfamilyclients_inherited: Optional[bool] = None,
+        channel_needed_talk_power: Optional[bool] = None,
+        channel_name_phonetic: Optional[str] = None,
+        channel_icon_id: Optional[str] = None,
+        channel_banner_gfx_url: Optional[str] = None,
+        channel_banner_mode: Optional[int] = None,
+
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'cpid': cpid,
+            'channel_name': channel_name,
+            'channel_topic': channel_topic,
+            'channel_description': channel_description,
+            'channel_password': channel_password,
+            'channel_codec': channel_codec,
+            'channel_codec_quality': channel_codec_quality,
+            'channel_maxclients': channel_maxclients,
+            'channel_maxfamilyclients': channel_maxfamilyclients,
+            'channel_order': channel_order,
+            'channel_flag_permanent': channel_flag_permanent,
+            'channel_flag_semi_permanent': channel_flag_semi_permanent,
+            'channel_flag_default': channel_flag_default,
+            'channel_codec_is_unencrypted': channel_codec_is_unencrypted,
+            'channel_flag_maxclients_unlimited': channel_flag_maxclients_unlimited,
+            'channel_flag_maxfamilyclients_unlimited': channel_flag_maxfamilyclients_unlimited,
+            'channel_flag_maxfamilyclients_inherited': channel_flag_maxfamilyclients_inherited,
+            'channel_needed_talk_power': channel_needed_talk_power,
+            'channel_name_phonetic': channel_name_phonetic,
+            'channel_icon_id': channel_icon_id,
+            'channel_banner_gfx_url': channel_banner_gfx_url,
+            'channel_banner_mode': channel_banner_mode
+        }
+        return self.query('channeledit', params)
+
+    def ch_find(
+        self,
+        pattern: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'pattern': pattern
+        }
+        return self.query('channelfind', params)
 
     def whoami(self) -> Response:
         return self.query('whoami')
