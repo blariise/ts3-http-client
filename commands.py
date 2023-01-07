@@ -303,6 +303,125 @@ class Commands():
         }
         return self.query('channelfind', params)
 
+    def ch_group_add(
+        self,
+        name: Optional[str] = None,
+        type: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'name': name,
+            'type': type
+        }
+        return self.query('channelgroupadd', params)
+
+    def ch_group_add_perm(
+        self,
+        cgid: Optional[int] = None,
+        permid: Optional[int] = None,
+        permsid: Optional[int] = None,
+        permvalue: Optional[int] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'cgid': cgid,
+            'permid': permid,
+            'permsid': permsid,
+            'permvalue': permvalue,
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('channelgroupaddperm', params)
+
+    def ch_group_client_list(
+        self,
+        cid: Optional[int] = None,
+        cldbid: Optional[int] = None,
+        cgid: Optional[int] = None,
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'cldbid': cldbid,
+            'cgid': cgid,
+        }
+        return self.query('channelgroupclientlist', params)
+
+    def ch_group_copy(
+        self,
+        scgid: Optional[int] = None,
+        tcgid: Optional[int] = None,
+        name: Optional[str] = None,
+        type: Optional[int] = None,
+    ) -> Response:
+
+        params = {
+            'scgid': scgid,
+            'tcgid': tcgid,
+            'name': name,
+            'type': type,
+        }
+        return self.query('channelgroupcopy', params)
+
+    def ch_group_del(
+        self,
+        cgid: Optional[int] = None,
+        force: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cgid': cgid,
+            'force': force
+        }
+        return self.query('channelgroupdel', params)
+
+    def ch_group_del_perm(
+        self,
+        cgid: Optional[int] = None,
+        permid: Optional[int] = None,
+        permsid: Optional[int] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'cgid': cgid,
+            'permid': permid,
+            'permsid': permsid
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('channelgroupdelperm', params)
+
+    def ch_group_list(self) -> Response:
+        return self.query('channelgrouplist')
+
+    def ch_group_perm_list(
+        self,
+        cgid: Optional[int] = None,
+        permsid: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'cgid': cgid
+        }
+        if permsid is True:
+            params['-permsid'] = ''
+        return self.query('channelgrouppermlist', params)
+
+    def ch_group_rename(
+        self,
+        cgid: Optional[int] = None,
+        name: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'cgid': cgid,
+            'name': name
+        }
+        return self.query('channelgrouprename', params)
+
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
