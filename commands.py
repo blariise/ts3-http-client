@@ -421,6 +421,46 @@ class Commands():
         }
         return self.query('channelgrouprename', params)
 
+    def ch_info(
+        self,
+        cid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid
+        }
+        return self.query('channelinfo', params)
+
+    def ch_list(self) -> Response:
+        return self.query('channellist')
+
+    def ch_move(
+        self,
+        cid: Optional[int] = None,
+        cpid: Optional[int] = None,
+        order: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'cpid': cpid,
+            'order': order
+        }
+        return self.query('channelmove', params)
+
+    def ch_perm_list(
+        self,
+        cid: Optional[int] = None,
+        permsid: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+        }
+        if permsid is True:
+            params['-permsid'] = ''
+        return self.query('channelpermlist', params)
+
 
     def whoami(self) -> Response:
         return self.query('whoami')
