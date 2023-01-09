@@ -704,6 +704,50 @@ class Commands():
         }
         return self.query('clientsetserverquerylogin', params)
 
+    def complain_add(
+        self,
+        tcldbid: Optional[int] = None,
+        message: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'tcldbid': tcldbid,
+            'message': message
+        }
+        return self.query('complainadd', params)
+
+    def complain_del(
+        self,
+        tcldbid: Optional[int] = None,
+        fcldbid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'tcldbid': tcldbid,
+            'fcldbid': fcldbid
+        }
+        return self.query('complaindel', params)
+
+    def complain_del_all(
+        self,
+        tcldbid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'tcldbid': tcldbid
+        }
+        return self.query('complaindelall', params)
+
+    def complain_list(
+        self,
+        tcldbid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'tcldbid': tcldbid,
+        }
+        return self.query('complainlist', params)
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
