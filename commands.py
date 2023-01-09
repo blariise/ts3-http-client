@@ -461,6 +461,67 @@ class Commands():
             params['-permsid'] = ''
         return self.query('channelpermlist', params)
 
+    def client_add_server_group(
+        self,
+        cldbid: Optional[int] = None,
+        sgid: Optional[int] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid,
+            'sgid': sgid
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('clientaddservergroup', params)
+
+    def client_db_delete(
+        self,
+        cldbid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid
+        }
+        return self.query('clientdbdelete', params)
+
+    def client_db_edit(
+        self,
+        cldbid: Optional[int] = None,
+        client_description: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid,
+            'client_description': client_description
+        }
+        return self.query('clientdbedit', params)
+
+    def client_db_find(
+        self,
+        cldbid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid
+        }
+        return self.query('clientdbfind', params)
+
+    def client_db_list(
+        self,
+        start: Optional[int] = None,
+        duration: Optional[int] = None,
+        count: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'start': start,
+            'duration': duration
+        }
+        if count is True:
+            params['-count'] = ''
+        return self.query('clientdblist', params)
 
     def whoami(self) -> Response:
         return self.query('whoami')
