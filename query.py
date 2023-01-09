@@ -14,7 +14,10 @@ class Query(Commands):
     def __init__(self) -> None:
         return None
 
-    def remove_none(self, dictionary):
+    def remove_none(
+        self,
+        dictionary: Optional[dict] = None
+    ) -> dict:
         new_dict = {
             key: value for key, value in dictionary.items() if value is not None
         }
