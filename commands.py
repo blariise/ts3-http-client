@@ -523,6 +523,187 @@ class Commands():
             params['-count'] = ''
         return self.query('clientdblist', params)
 
+    def client_del_perm(
+        self,
+        cldbid: Optional[int] = None,
+        permid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid,
+            'permid': permid
+        }
+        return self.query('clientdelperm', params)
+
+    def client_del_server_group(
+        self,
+        cldbid: Optional[int] = None,
+        sgid: Optional[int] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid,
+            'sgid': sgid
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('clientdelservergroup', params)
+
+    def client_edit(
+        self,
+        clid: Optional[int] = None,
+        client_nickname: Optional[str] = None,
+        client_description: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'clid': clid,
+            'client_nickname': client_nickname,
+            'client_description': client_description
+        }
+        return self.query('clientedit', params)
+
+    def client_find(
+        self,
+        pattern: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'pattern': pattern
+        }
+        return self.query('clientfind', params)
+
+    def client_get_db_id_from_uid(
+        self,
+        cluid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cluid': cluid
+        }
+        return self.query('clientgetdbidfromuid', params)
+
+    def client_get_ids(
+        self,
+        cluid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cluid': cluid
+        }
+        return self.query('clientgetids', params)
+
+    def client_get_name_from_db_id(
+        self,
+        cldbid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid
+        }
+        return self.query('clientgetnamefromdbid', params)
+
+    def client_get_name_from_uid(
+        self,
+        cluid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cluid': cluid
+        }
+        return self.query('clientgetnamefromuid', params)
+
+    def client_get_uid_from_clid(
+        self,
+        clid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'clid': clid
+        }
+        return self.query('clientgetuidfromclid', params)
+
+    def client_info(
+        self,
+        clid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'clid': clid
+        }
+        return self.query('clientinfo', params)
+
+    def client_kick(
+        self,
+        clid: Optional[int] = None,
+        reasonid: Optional[int] = None,
+        reasonmsg: Optional[str] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'clid': clid,
+            'reasonid': reasonid,
+            'reasonmsg': reasonmsg
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('clientkick', params)
+
+    def client_move(
+        self,
+        clid: Optional[int] = None,
+        cid: Optional[int] = None,
+        cpw: Optional[str] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'clid': clid,
+            'cid': cid,
+            'cpw': cpw
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('clientmove', params)
+
+    def client_perm_list(
+        self,
+        cldbid: Optional[int] = None,
+        permsid: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid,
+            'permsid': permsid
+        }
+        if permsid is True:
+            params['-permsid'] = ''
+        return self.query('clientpermlist', params)
+
+    def client_poke(
+        self,
+        clid: Optional[int] = None,
+        msg: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'clid': clid,
+            'msg': msg
+        }
+        return self.query('clientpoke', params)
+
+    def client_set_server_query_login(
+        self,
+        client_login_name: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'client_login_name': client_login_name
+        }
+        return self.query('clientsetserverquerylogin', params)
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
