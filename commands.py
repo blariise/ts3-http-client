@@ -748,6 +748,54 @@ class Commands():
         }
         return self.query('complainlist', params)
 
+    def custom_delete(
+        self,
+        cldbid: Optional[int] = None,
+        ident: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid,
+            'ident': ident
+        }
+        return self.query('customdelete', params)
+
+    def custom_info(
+        self,
+        cldbid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid
+        }
+        return self.query('custominfo', params)
+
+    def custom_search(
+        self,
+        ident: Optional[int] = None,
+        pattern: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'ident': ident,
+            'pattern': pattern
+        }
+        return self.query('customsearch', params)
+
+    def custom_set(
+        self,
+        cldbid: Optional[int] = None,
+        ident: Optional[int] = None,
+        value: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid,
+            'ident': ident,
+            'value': value
+        }
+        return self.query('customset', params)
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
