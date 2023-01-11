@@ -798,27 +798,32 @@ class Commands():
 
     def ft_create_dir(
         self,
-        cid: Optional[str] = None,
-        dirname: Optional[str] = None   
+        cid: Optional[int] = None,
+        cpw: Optional[str] = None,
+        dirname: Optional[str] = None
     ) -> Response:
 
         params = {
             'cid': cid,
+            'cpw': cpw,
             'dirname': dirname
         }
         return self.query('ftcreatedir', params)
 
     def ft_delete_file(
         self,
-        cid: Optional[str] = None,
-        name: Optional[str] = None,
+        cid: Optional[int] = None,
+        cpw: Optional[str] = None,
+        name: Optional[str] = None
     ) -> Response:
 
         params = {
             'cid': cid,
-            'name': name,
+            'cpw': cpw,
+            'name': name
         }
         return self.query('ftdeletefile', params)
+
 
     def whoami(self) -> Response:
         return self.query('whoami')
