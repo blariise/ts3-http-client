@@ -824,6 +824,112 @@ class Commands():
         }
         return self.query('ftdeletefile', params)
 
+    def ft_get_file_info(
+        self,
+        cid: Optional[int] = None,
+        cpw: Optional[str] = None,
+        name: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'cpw': cpw,
+            'name': name
+        }
+        return self.query('ftgetfileinfo', params)
+
+    def ft_get_file_list(
+        self,
+        cid: Optional[int] = None,
+        cpw: Optional[str] = None,
+        path: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'cpw': cpw,
+            'path': path
+        }
+        return self.query('ftgetfilelist', params)
+
+    def ft_init_download(
+        self,
+        clientftfid: Optional[int] = None,
+        name: Optional[str] = None,
+        cid: Optional[int] = None,
+        cpw: Optional[str] = None,
+        seekpos: Optional[int] = None,
+        proto: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'clientftfid': clientftfid,
+            'name': name,
+            'cid': cid,
+            'cpw': cpw,
+            'seekpos': seekpos,
+            'proto': proto
+        }
+        return self.query('ftinitdownload', params)
+
+    def ft_init_upload(
+        self,
+        clientftfid: Optional[int] = None,
+        name: Optional[str] = None,
+        cid: Optional[int] = None,
+        cpw: Optional[str] = None,
+        size: Optional[int] = None,
+        overwrite: Optional[int] = None,
+        resume: Optional[int] = None,
+        proto: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'clientftfid': clientftfid,
+            'name': name,
+            'cid': cid,
+            'cpw': cpw,
+            'size': size,
+            'overwrite': overwrite,
+            'resume': resume,
+            'proto': proto
+        }
+        return self.query('ftinitupload', params)
+
+    def ft_list(self) -> Response:
+        return self.query('ftlist')
+
+    def ft_rename_file(
+        self,
+        cid: Optional[int] = None,
+        cpw: Optional[str] = None,
+        tcid: Optional[int] = None,
+        tcpw: Optional[str] = None,
+        oldname: Optional[str] = None,
+        newname: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'cpw': cpw,
+            'tcid': tcid,
+            'tcpw': tcpw,
+            'oldname': oldname,
+            'newname': newname
+        }
+        return self.query('ftrenamefile', params)
+
+    def ft_stop(
+        self,
+        serverftfid: Optional[int] = None,
+        delete: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'serverftfid': serverftfid,
+            'delete': delete
+        }
+        return self.query('ftstop', params)
 
     def whoami(self) -> Response:
         return self.query('whoami')
