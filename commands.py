@@ -999,6 +999,55 @@ class Commands():
         }
         return self.query('logview', params)
 
+    def message_add(
+        self,
+        cluid: Optional[int] = None,
+        subject: Optional[str] = None,
+        message: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'cluid': cluid,
+            'subject': subject,
+            'message': message
+        }
+        return self.query('messageadd', params)
+
+    def message_del(
+        self,
+        msgid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'msgid': msgid
+        }
+        return self.query('messagedel', params)
+
+    def message_get(
+        self,
+        msgid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'msgid': msgid
+        }
+        return self.query('messageget', params)
+
+    def message_list(self) -> Response:
+        return self.query('messagelist')
+
+    def message_update_flag(
+        self,
+        msgid: Optional[int] = None,
+        flag: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'msgid': msgid,
+            'flag': flag
+        }
+        return self.query('messageupdateflag', params)
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
