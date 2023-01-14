@@ -1048,6 +1048,62 @@ class Commands():
         }
         return self.query('messageupdateflag', params)
 
+    def perm_find(
+        self,
+        permid: Optional[int] = None,
+        permsid: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'permid': permid,
+            'permsid': permsid
+        }
+        return self.query('permfind', params)
+
+    def perm_get(
+        self,
+        permid: Optional[int] = None,
+        permsid: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'permid': permid,
+            'permsid': permsid
+        }
+        return self.query('permget', params)
+
+    def perm_id_get_by_name(
+        self,
+        permsid: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'permsid': permsid
+        }
+        return self.query('permidgetbyname', params)
+
+    def permission_list(self) -> Response:
+        return self.query('permissionlist')
+
+    def perm_overview(
+        self,
+        cid: Optional[int] = None,
+        cldbid: Optional[int] = None,
+        permid: Optional[int] = None,
+        permsid: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'cid': cid,
+            'cldbid': cldbid,
+            'permid': permid,
+            'permsid': permsid
+        }
+        return self.query('permoverview', params)
+
+    def perm_reset(self) -> Response:
+        return self.query('permreset')
+        
     def whoami(self) -> Response:
         return self.query('whoami')
         
