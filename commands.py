@@ -1103,7 +1103,46 @@ class Commands():
 
     def perm_reset(self) -> Response:
         return self.query('permreset')
-        
+
+    def privilege_keya_dd(
+        self,
+        tokentype: Optional[int] = None,
+        tokenid1: Optional[int] = None,
+        tokendescription: Optional[str] = None,
+        tokencustomset: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'tokentype': tokentype,
+            'tokenid1': tokenid1,
+            'tokendescription': tokendescription,
+            'tokencustomset': tokencustomset
+        }
+        return self.query('privilegekeyadd', params)
+
+    def privilege_key_delete(
+        self,
+        token: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'token': token
+        }
+        return self.query('privilegekeydelete', params)
+
+    def privilege_key_list(self) -> Response:
+        return self.query('privilegekeylist')
+
+    def privilege_key_use(
+        self,
+        token: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'token': token
+        }
+        return self.query('privilegekeyuse', params)
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
