@@ -956,6 +956,49 @@ class Commands():
     def instance_info(self) -> Response:
         return self.query('instanceinfo')
 
+    def log_add(
+        self,
+        loglevel: Optional[int] = None,
+        logmsg: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'loglevel': loglevel,
+            'logmsg': logmsg
+        }
+        return self.query('logadd', params)
+
+    def login(
+        self,
+        client_login_name: Optional[str] = None,
+        client_login_password: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'client_login_name': client_login_name,
+            'client_login_password': client_login_password
+        }
+        return self.query('login', params)
+
+    def logout(self) -> Response:
+        return self.query('logout')
+
+    def log_view(
+        self,
+        lines: Optional[int] = None,
+        reverse: Optional[int] = None,
+        instance: Optional[int] = None,
+        begin_pos: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'lines': lines,
+            'reverse': reverse,
+            'instance': instance,
+            'begin_pos': begin_pos
+        }
+        return self.query('logview', params)
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
