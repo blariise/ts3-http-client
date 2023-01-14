@@ -1143,6 +1143,45 @@ class Commands():
         }
         return self.query('privilegekeyuse', params)
 
+    def query_login_add(
+        self,
+        client_login_name: Optional[str] = None,
+        cldbid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'client_login_name': client_login_name,
+            'cldbid': cldbid
+        }
+        return self.query('queryloginadd', params)
+
+    def query_login_del(
+        self,
+        cldbid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid
+        }
+        return self.query('querylogindel', params)
+
+    def query_login_list(
+        self,
+        pattern: Optional[str] = None,
+        start: Optional[int] = None,
+        duration: Optional[int] = None,
+        count: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'pattern': pattern,
+            'start': start,
+            'duration': duration,
+        }
+        if count is True:
+            params['-count'] = ''
+        return self.query('queryloginlist', params)
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
