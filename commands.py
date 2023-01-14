@@ -1419,6 +1419,123 @@ class Commands():
         }
         return self.query('servergroupsbyclientid', params)
 
+    def server_id_get_by_port(
+        self,
+        virtualserver_port: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'virtualserver_port': virtualserver_port
+        }
+        return self.query('serveridgetbyport', params)
+
+    def server_info(self) -> Response:
+        return self.query('serverinfo')
+
+    def server_list(self) -> Response:
+        return self.query('serverlist')
+
+    def server_notify_register(
+        self,
+        event: Optional[str] = None,
+        id: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'event': event,
+            'id': id
+        }
+        return self.query('servernotifyregister', params)
+
+    def server_notify_unregister(self) -> Response:
+        return self.query('servernotifyunregister')
+
+    def server_process_stop(
+        self,
+        reasonmsg: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'reasonmsg': reasonmsg
+        }
+        return self.query('serverprocessstop', params)
+
+    def server_request_connection_info(self) -> Response:
+        return self.query('serverrequestconnectioninfo')
+
+    def server_snapshot_create(
+        self,
+        password: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'password': password
+        }
+        return self.query('serversnapshotcreate', params)
+
+    def server_snapshot_deploy(
+        self,
+        password: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'password': password
+        }
+        return self.query('serversnapshotdeploy', params)
+
+    def server_start(
+        self,
+        sid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'sid': sid
+        }
+        return self.query('serverstart', params)
+
+    def server_stop(
+        self,
+        sid: Optional[int] = None,
+        reasonmsg: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'sid': sid,
+            'reasonmsg': reasonmsg
+        }
+        return self.query('serverstop', params)
+
+    def server_temp_password_add(
+        self,
+        pw: Optional[str] = None,
+        desc: Optional[str] = None,
+        duration: Optional[int] = None,
+        tcid: Optional[int] = None,
+        tcpw: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'pw': pw,
+            'desc': desc,
+            'duration': duration,
+            'tcid': tcid,
+            'tcpw': tcpw
+        }
+        return self.query('servertemppasswordadd', params)
+
+    def server_temp_password_del(
+        self,
+        pw: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'pw': pw
+        }
+        return self.query('servertemppassworddel', params)
+
+    def server_temp_password_list(self) -> Response:
+        return self.query('servertemppasswordlist')
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
