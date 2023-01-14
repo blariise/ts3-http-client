@@ -1536,6 +1536,59 @@ class Commands():
     def server_temp_password_list(self) -> Response:
         return self.query('servertemppasswordlist')
 
+    def set_client_channel_group(
+        self,
+        cgid: Optional[int] = None,
+        cid: Optional[int] = None,
+        cldbid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cgid': cgid,
+            'cid': cid,
+            'cldbid': cldbid
+        }
+        return self.query('setclientchannelgroup', params)
+
+    def token_add(
+        self,
+        tokentype: Optional[int] = None,
+        tokenid1: Optional[int] = None,
+        tokenid2: Optional[int] = None,
+        tokendescription: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'tokentype': tokentype,
+            'tokenid1': tokenid1,
+            'tokenid2': tokenid2,
+            'tokendescription': tokendescription
+        }
+        return self.query('tokenadd', params)
+
+    def token_delete(
+        self,
+        token: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'token': token
+        }
+        return self.query('tokendelete', params)
+
+    def token_list(self) -> Response:
+        return self.query('tokenlist')
+
+    def token_use(
+        self,
+        token: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'token': token
+        }
+        return self.query('tokenuse', params)
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
