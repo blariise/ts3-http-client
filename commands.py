@@ -931,6 +931,31 @@ class Commands():
         }
         return self.query('ftstop', params)
 
+    def gm(
+        self,
+        msg: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'msg': msg
+        }
+        return self.query('gm', params)
+
+    def host_info(self) -> Response:
+        return self.query('hostinfo')
+
+    def instance_edit(
+        self,
+        **kwargs
+    ) -> Response:
+
+        params = {}
+        params += kwargs
+        return self.query('instanceedit', params)        
+    
+    def instance_info(self) -> Response:
+        return self.query('instanceinfo')
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
