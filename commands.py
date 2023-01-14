@@ -1182,6 +1182,243 @@ class Commands():
             params['-count'] = ''
         return self.query('queryloginlist', params)
 
+    def query_quit(self) -> Response:
+        return self.query('quit')
+        
+    def send_text_message(
+        self,
+        targetmode: Optional[int] = None,
+        target: Optional[int] = None,
+        msg: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'targetmode': targetmode,
+            'target': target,
+            'msg': msg
+        }
+        return self.query('sendtextmessage', params)
+
+    def server_create(
+        self,
+        **kwargs
+    ) -> Response:
+
+        params = {}
+        params += kwargs
+        return self.query('servercreate', params)
+
+    def server_delete(
+        self,
+        sid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'sid': sid
+        }
+        return self.query('serverdelete', params)
+
+    def server_edit(
+        self,
+        **kwargs
+    ) -> Response:
+
+        params = {}
+        params += kwargs
+        return self.query('serveredit', params)
+
+    def server_group_add(
+        self,
+        name: Optional[str] = None,
+        group_type: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'name': name,
+            'type': group_type
+        }
+        return self.query('servergroupadd', params)
+
+    def server_group_add_client(
+        self,
+        sgid: Optional[int] = None,
+        cldbid: Optional[int] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'sgid': sgid,
+            'cldbid': cldbid
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('servergroupaddclient', params)
+
+    def server_group_add_perm(
+        self,
+        sgid: Optional[int] = None,
+        permid: Optional[int] = None,
+        permsid: Optional[int] = None,
+        permvalue: Optional[int] = None,
+        permnegated: Optional[int] = None,
+        permskip: Optional[int] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'sgid': sgid,
+            'permid': permid,
+            'permsid': permsid,
+            'permvalue': permvalue,
+            'permnegated': permnegated,
+            'permskip': permskip
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('servergroupaddperm', params)
+
+    def server_group_auto_add_perm(
+        self,
+        sgtype: Optional[int] = None,
+        permid: Optional[int] = None,
+        permsid: Optional[int] = None,
+        permvalue: Optional[int] = None,
+        permnegated: Optional[int] = None,
+        permskip: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'sgtype': sgtype,
+            'permid': permid,
+            'permsid': permsid,
+            'permvalue': permvalue,
+            'permnegated': permnegated,
+            'permskip': permskip
+        }
+        return self.query('servergroupautoaddperm', params)
+
+    def server_group_auto_del_perm(
+        self,
+        sgtype: Optional[int] = None,
+        permid: Optional[int] = None,
+        permsid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'sgtype': sgtype,
+            'permid': permid,
+            'permsid': permsid
+        }
+        return self.query('servergroupautodelperm', params)
+
+    def server_group_client_list(
+        self,
+        sgid: Optional[int] = None,
+        names: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'sgid': sgid
+        }
+        if names is True:
+            params['-names'] = ''
+        return self.query('servergroupclientlist', params)
+
+    def server_group_copy(
+        self,
+        ssgid: Optional[int] = None,
+        tsgid: Optional[int] = None,
+        name: Optional[str] = None,
+        group_type: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'ssgid': ssgid,
+            'tsgid': tsgid,
+            'name': name,
+            'type': group_type
+        }
+        return self.query('servergroupcopy', params)
+
+    def server_group_del(
+        self,
+        sgid: Optional[int] = None,
+        force: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'sgid': sgid,
+            'force': force
+        }
+        return self.query('servergroupdel', params)
+
+    def server_group_del_client(
+        self,
+        sgid: Optional[int] = None,
+        cldbid: Optional[int] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'sgid': sgid,
+            'cldbid': cldbid
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('servergroupdelclient', params)
+
+    def server_group_del_perm(
+        self,
+        sgid: Optional[int] = None,
+        permid: Optional[int] = None,
+        permsid: Optional[int] = None,
+        continueonerror: Optional[bool] = None
+    ) -> Response:
+
+        params = {
+            'sgid': sgid,
+            'permid': permid,
+            'permsid': permsid
+        }
+        if continueonerror is True:
+            params['-continueonerror'] = ''
+        return self.query('servergroupdelperm', params)
+
+    def server_group_list(self) -> Response:
+        return self.query('servergrouplist')
+
+    def server_group_perm_list(
+        self,
+        sgid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'sgid': sgid
+        }
+        return self.query('servergrouppermlist', params)
+
+    def server_group_rename(
+        self,
+        sgid: Optional[int] = None,
+        name: Optional[str] = None
+    ) -> Response:
+
+        params = {
+            'sgid': sgid,
+            'name': name
+        }
+        return self.query('servergrouprename', params)
+
+    def server_groups_by_client_id(
+        self,
+        cldbid: Optional[int] = None
+    ) -> Response:
+
+        params = {
+            'cldbid': cldbid
+        }
+        return self.query('servergroupsbyclientid', params)
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
