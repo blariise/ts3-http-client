@@ -1589,6 +1589,12 @@ class Commands():
         }
         return self.query('tokenuse', params)
 
+    def use(self) -> Response:
+        return self.query('use')
+
+    def version(self) -> Response:
+        return self.query('version')
+
     def whoami(self) -> Response:
         return self.query('whoami')
         
